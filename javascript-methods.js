@@ -62,12 +62,21 @@ Array.prototype.myEvery = function(callbackFn) {
   // Place your code here.
 };
 
-
-
 // REDUCE //
 Array.prototype.myReduce = function(callbackFn) {
+  let accumulator  = this[0];
+  size = this.length;
+  for(let i = 1;i<size;i++){
+
+    accumulator  = callbackFn(accumulator ,this[i],i,this)
+  }
+  return accumulator ;
+  
   // Place your code here.
 };
+
+
+
 
 // INCLUDES //
 Array.prototype.myIncludes = function(searchElement) {
