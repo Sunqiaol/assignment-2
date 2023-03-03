@@ -36,8 +36,6 @@ Array.prototype.myFilter = function(callbackFn) {
 };
 
 
-
-
 Array.prototype.mySome = function(callbackFn) {
   for(let i =0;i<this.length;i++){
     if(callbackFn(this[i],i,this)){
@@ -51,8 +49,20 @@ Array.prototype.mySome = function(callbackFn) {
 
 // EVERY //
 Array.prototype.myEvery = function(callbackFn) {
+  let size = this.length;
+  for(let i =0;i<size;i++){
+    if(i >= this.length){
+      continue;
+    }
+    if(!callbackFn(this[i],i,this)){
+      return false;
+    }
+  }
+  return true;
   // Place your code here.
 };
+
+
 
 // REDUCE //
 Array.prototype.myReduce = function(callbackFn) {
