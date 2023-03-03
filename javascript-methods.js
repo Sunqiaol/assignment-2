@@ -24,6 +24,7 @@ Array.prototype.myFilter = function(callbackFn) {
   let result = [];
   let size = this.length
   for(let i =0;i<size;i++){
+    if((this[i] === undefined && i in this) || this[i] !== undefined){
     if(i >= this.length){
       continue;
     }
@@ -31,63 +32,58 @@ Array.prototype.myFilter = function(callbackFn) {
       result.push(this[i]);
     }
   }
+}
   return result;
   // Place your code here.
 };
 
 
 Array.prototype.mySome = function(callbackFn) {
+  let result = false
   for(let i =0;i<this.length;i++){
+    if((this[i] === undefined && i in this) || this[i] !== undefined){
     if(callbackFn(this[i],i,this)){
-      return true;
+      result = true
     }
   }
-  return false;
+}
+  return result;
   // Place your code here.
 };
 
 
-// EVERY //
 Array.prototype.myEvery = function(callbackFn) {
   let size = this.length;
   for(let i =0;i<size;i++){
-    if(i >= this.length){
+    if((this[i] === undefined && i in this) || this[i] !== undefined){
+    if(i >= this.length || this[i] === undefined){
       continue;
     }
     if(!callbackFn(this[i],i,this)){
       return false;
     }
   }
+  }
   return true;
   // Place your code here.
 };
 
+
+
 // REDUCE //
 Array.prototype.myReduce = function(callbackFn) {
-  let accumulator  = this[0];
+  let accumulator = 0
   size = this.length;
-  for(let i = 1;i<size;i++){
+  for(let i = 0;i<size;i++){
+    if((this[i] === undefined && i in this) || this[i] !== undefined){
     accumulator  = callbackFn(accumulator ,this[i],i,this)
   }
+}
   return accumulator ;
   
   // Place your code here.
 };
 
-
-
-
-
-// INCLUDES //
-Array.prototype.myIncludes = function(searchElement) {
-  for(let i =0;i<this.length;i++){
-    if(this[i] === searchElement){
-      return true;
-    }
-  }
-  return false;
-  // Place your code here.
-};
 
 
 
