@@ -151,5 +151,13 @@ Object.myKeys = function(object) {
 
 // VALUES //
 Object.myValues = function(object) {
+  var value = [];
+  for(var key in object){
+    if(typeof object[key] !== 'function'){
+      value.push(object[key]);
+    }
+  }
+  return value
   // Place your code here.
 };
+
