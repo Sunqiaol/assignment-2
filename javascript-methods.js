@@ -115,7 +115,24 @@ Array.prototype.myIndexOf = function(searchElement) {
 // LASTINDEXOF //
 Array.prototype.myLastIndexOf = function(searchElement) {
   // Place your code here.
+  size = this.length
+  result = -1
+  for(let i =0 ;i < size;i++){
+    if(this[i] === undefined){
+      return -1
+    }
+    if(i>=size){
+      continue;
+    }
+    if(this[i] == searchElement){
+      result = i;
+    }
+  }
+  return result;
+  // Place your code here.
 };
+
+
 
 // KEYS //
 Object.myKeys = function(object) {
